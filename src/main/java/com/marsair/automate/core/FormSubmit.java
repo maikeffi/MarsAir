@@ -28,7 +28,10 @@ public class FormSubmit extends ActionBase {
         waitForLink("Back");
         List<WebElement> paraElemets = findElementsByTagName("p");
         for (WebElement webElement : paraElemets){
-            System.out.println(webElement.getText());
+            String temp = webElement.getText();
+            if (!temp.equals("Back")){
+                result = temp;
+            }
         }
 
 
