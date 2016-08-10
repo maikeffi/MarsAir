@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 /**
  * Created by Ganga Hawa on 09-08-2016.
  */
-public class baseTest {
+public class BaseTest {
 
    public static Manager manager = new Manager();
 
