@@ -9,7 +9,7 @@ import java.util.Properties;
 public class GetItem {
     protected Properties prop = null;
 
-    public String getItem(String item) throws Exception{
+    public String getItemFromProp(String item) throws Exception{
         if (prop == null){
             prop = new Properties();
             try {
