@@ -18,7 +18,7 @@ public class FormSubmit extends ActionBase {
     }
 
     public String submitForm(String depValue,String retValue,String promo) throws Exception {
-        String result = "default";
+        String result = "";
 
         goToMainPage("http://kannan16.marsair.tw/");
         setDropDownValue("dropDeparting",depValue);
@@ -29,13 +29,13 @@ public class FormSubmit extends ActionBase {
         List<WebElement> paraElemets = findElementsByTagName("p");
         for (WebElement webElement : paraElemets){
             String temp = webElement.getText();
-            if (!temp.equals("Back")){
-                result = temp;
-            }
+
+            if (!temp.equals("Back")){result = result+" "+temp;}
         }
+        System.out.println(result);
 
 
-        return result;
+        return result.trim();
     }
 
 }
