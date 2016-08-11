@@ -36,7 +36,7 @@ public class SearchSeatsTest extends BaseTest {
     }
 
 
-    @Parameters( name = "{index}: submitFrom({0})={1}" )
+    @Parameters( name = "{index}: submitFrom({0} and {1}) and get output({2} or {3})" )
     public static Collection stringInput(){
         return Arrays.asList(new Object[][]{
                 {"July","July","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
