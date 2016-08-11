@@ -36,17 +36,21 @@ public class SearchSeatsTest extends BaseTest {
     }
 
 
-    @Parameters
+    @Parameters( name = "{index}: submitFrom({0})={1}" )
     public static Collection stringInput(){
         return Arrays.asList(new Object[][]{
                 {"July","July","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
                 {"July","December","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
-                {"July","July (next year)","Sorry, there are no more seats available.","Seats available! Call 0800 MARSAIR to book!"},
+                {"July","July (next year)","Sorry, there are no more seats available.","Seats available! Call now on 0800 MARSAIR to book!"},
                 {"July (next year)","July (next year)","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
                 {"December","July (next year)","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
-                {"December","December (next year)","Sorry, there are no more seats available.","Seats available! Call 0800 MARSAIR to book!"},
-                {"December","December (two years from now)","Sorry, there are no more seats available.","Seats available! Call 0800 MARSAIR to book!"},
-                {"July","December (two years from now)","Seats available! Call 0800 MARSAIR to book!","Sorry, there are no more seats available."}
+                {"December","December (next year)","Sorry, there are no more seats available.","Seats available! Call now on 0800 MARSAIR to book!"},
+                {"December","December (two years from now)","Sorry, there are no more seats available.","Seats available! Call now on 0800 MARSAIR to book!"},
+                {"July","December (two years from now)","Sorry, there are no more seats available.","Seats available! Call now on 0800 MARSAIR to book!"},
+                {"July (next year)","December (two years from now)","Sorry, there are no more seats available.","Seats available! Call now on 0800 MARSAIR to book!"},
+                {"July (next year)","December","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."},
+                {"December (two years from now)","December (two years from now)","Unfortunately, this schedule is not possible. Please try again.","Unfortunately, this schedule is not possible. Please try again."}
+
         });
     }
 
@@ -55,15 +59,23 @@ public class SearchSeatsTest extends BaseTest {
 
     @Test
     public void run() throws Exception {
-        ;
+
 
         //assertEquals("Finding seats on MarsAir",expected,manager.getFormSubmit().submitForm(depValue,retValue,""));
         //assertThat(myString, anyOf(is("value1"), is("value2"));
-        //trying to use hamcrest matcher here !!
+        //trying to use hamcrest matcher here !! so that assertion can happen against 2 values
+
+        /**try {
+            assertThat(manager.getFormSubmit().submitForm(depValue,retValue,""),isOneOf(expectedValue1,expectedValue2));
+        }catch (AssertionError e){
+            System.out.println("Test Failed");
+            System.out.println("Expected : "+expectedValue1 +" or "+expectedValue2);
+            System.out.println("Actual : "+manager.getFormSubmit().submitForm(depValue,retValue,""));
+        }**/
 
         assertThat(manager.getFormSubmit().submitForm(depValue,retValue,""),isOneOf(expectedValue1,expectedValue2));
 
-        //Assert.assertTrue();
+
 
     }
 }

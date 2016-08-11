@@ -32,7 +32,7 @@ public class FormSubmit extends ActionBase {
 
             if (!temp.equals("Back")){result = result+" "+temp;}
         }
-        System.out.println(result);
+        //System.out.println(result);
 
 
         return result.trim();
