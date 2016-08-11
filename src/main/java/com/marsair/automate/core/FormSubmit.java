@@ -9,18 +9,16 @@ import java.util.List;
  */
 public class FormSubmit extends ActionBase {
 
-    public FormSubmit(Manager manager) {
+    public FormSubmit(Manager manager) throws Exception {
         super(manager);
     }
 
-    public void goToMainPage(String url){
-        webDriver.get(url);
-    }
+
 
     public String submitForm(String depValue,String retValue,String promo) throws Exception {
         String result = "";
 
-        goToMainPage("http://kannan16.marsair.tw/");
+        goToMainPage();
         setDropDownValue("dropDeparting",depValue);
         setDropDownValue("dropReturning",retValue);
         setTextBoxValue("boxPromo",promo);
@@ -31,8 +29,12 @@ public class FormSubmit extends ActionBase {
             String temp = webElement.getText();
 
             if (!temp.equals("Back")){result = result+" "+temp;}
+
         }
-        //System.out.println(result);
+
+        if (!promo.equals("")){
+            result = result.replace("Seats available!","").replace("Call now on 0800 MARSAIR to book!","").trim();
+        }
 
 
         return result.trim();

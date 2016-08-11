@@ -13,15 +13,17 @@ import java.util.List;
 
 
 /**
- * Created by Ganga Hawa on 09-08-2016.
+ * Created by Kannan Maikeffi on 09-08-2016.
  */
 public class ActionBase {
     protected Manager manager;
     protected WebDriver webDriver;
 
-    public ActionBase(Manager manager) {
+    public ActionBase(Manager manager) throws Exception {
         this.manager = manager;
-        webDriver = manager.getCrDriver().getDriver();
+        String browser = manager.getProItem().getItemFromProp("webBrowser");
+        if (browser.equals("chrome")){webDriver = manager.getCrDriver().getDriver();}
+        if (browser.equals("firefox")){webDriver = manager.getFfDriver().getDriver();}
     }
 
 
@@ -30,8 +32,18 @@ public class ActionBase {
         return  webDriver.findElement(By.xpath(xpath));
     }
 
+    public void goToMainPage() throws Exception {
+        String url = manager.getProItem().getItemFromProp("url");
+        webDriver.get(url);
+
+    }
+
     public WebElement findElementByLinkText(String linkText){
         return webDriver.findElement(By.linkText(linkText));
+    }
+
+    public String returnPageTitle(){
+        return webDriver.getTitle();
     }
 
     public List<WebElement> findElementsByTagName(String tagName){

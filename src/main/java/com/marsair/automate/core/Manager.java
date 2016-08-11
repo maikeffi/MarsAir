@@ -3,14 +3,16 @@ package com.marsair.automate.core;
 import com.marsair.automate.utils.GetItem;
 
 /**
- * Created by Ganga Hawa on 09-08-2016.
+ * Created by Kannan Maikeffi on 09-08-2016.
  */
 public class Manager {
 
     private static Manager manager;
     private CRDriver crDriver;
+    private FFDriver ffDriver;
     private FormSubmit formSubmit;
     private GetItem proItem;
+    private FindLinks findLinks;
 
 
     public static Manager getManager() {
@@ -28,7 +30,15 @@ public class Manager {
         return crDriver;
     }
 
-    public FormSubmit getFormSubmit() {
+    public FFDriver getFfDriver() {
+
+        if (ffDriver == null){
+            ffDriver = new FFDriver();
+        }
+        return ffDriver;
+    }
+
+    public FormSubmit getFormSubmit() throws Exception {
         if (formSubmit==null){
             formSubmit = new  FormSubmit(this);
         }
@@ -41,6 +51,15 @@ public class Manager {
         }
 
         return proItem;
+    }
+
+    public FindLinks getFindLinks() throws Exception {
+        if (findLinks==null){
+            findLinks = new FindLinks(this);
+
+        }
+
+        return findLinks;
     }
 
     public void kill(){

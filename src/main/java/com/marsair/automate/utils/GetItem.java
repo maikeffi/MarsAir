@@ -4,7 +4,7 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 /**
- * Created by Ganga Hawa on 09-08-2016.
+ * Created by Kannan Maikeffi on 09-08-2016.
  */
 public class GetItem {
     protected Properties prop = null;

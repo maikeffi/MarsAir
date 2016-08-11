@@ -17,7 +17,7 @@ import static org.junit.Assert.*;
 import org.hamcrest.*;
 
 /**
- * Created by Ganga Hawa on 10-08-2016.
+ * Created by Kannan Maikeffi on 10-08-2016.
  */
 @RunWith(value = Parameterized.class)
 public class SearchSeatsTest extends BaseTest {
